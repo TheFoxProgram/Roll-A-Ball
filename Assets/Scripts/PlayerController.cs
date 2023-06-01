@@ -18,12 +18,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnMove(InputValue movementValue)
     {
         // Takes the Vector2 data and stores it in movementValue as a Vector2 type variable;

@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnMove(InputValue movementValue)
+    private void OnMove(InputValue movementValue)
     {
         // Takes the Vector2 data and stores it in movementValue as a Vector2 type variable;
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -27,10 +27,18 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }
